@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+</head>
+<body data-gr-c-s-loaded="true" style="margin: 0px;">
+{% if session['logged_in'] and (session['SecurityLevel'] == 1  or session['SecurityLevel'] == 2)  %}
+
+      <table border="1">
+         <thead>
+            <tr><td>Name</td>
+            <td>Phone Number</td>
+            <td>Prequalified Upper Limit</td>
+            <td>App Role Level</td>
+            <td>Login Password</td>
+         </tr></thead>
+          <tbody>
+          {% for row in rows.itertuples() %}
+
+          <tr>
+               <td>{{row["Name"]}}</td>
+               <td>{{row["PhoneNumber"]}}</td>
+               <td> {{ row["PrequalifiedUpperLimit"]}}</td>
+               <td> {{ row["AppRoleLevel"]}}</td>
+               <td>{{row["LoginPassword"]}}</td>
+            </tr>
+      {% endfor %}
+          </tbody>
+      </table>
+
+      <a href="/">Go back to home page</a>
+{% endif %}
+</body></html>
